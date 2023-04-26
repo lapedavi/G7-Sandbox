@@ -129,3 +129,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'CollectAll.SiteUser'
 
 LOGIN_REDIRECT_URL = '/'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'uno.isqa3900.group7@gmail.com'
+EMAIL_HOST_PASSWORD = 'wtymmpodvoynvxxr'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+SERVER_EMAIL = 'root@gmail.com'
