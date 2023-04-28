@@ -38,7 +38,7 @@ class ProfileView(generic.DetailView):
 
 class CollectionCreate(LoginRequiredMixin, CreateView):
     model = Collection
-    fields = ['name', 'private', 'favorite', 'notes', 'collectionType']
+    fields = ['name', 'private', 'favorite', 'notes', 'collectionType', 'siteUser']
 
 
 class CollectionUpdate(LoginRequiredMixin, UpdateView):
