@@ -4,6 +4,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib import messages
+from .forms import CollectionCreate
 
 
 def index(request):
@@ -36,9 +37,14 @@ class ProfileView(generic.DetailView):
         return self.request.user == SiteUser
 
 
-class CollectionCreate(LoginRequiredMixin, CreateView):
-    model = Collection
-    fields = ['name', 'private', 'favorite', 'notes', 'collectionType', 'siteUser']
+def create_collection(request):
+    if request.method == 'POST':
+        form = CollectionCreate(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = CollectionCreate(initial={"siteUser": request.user})
+    return render(request, "CollectAll/collection_form.html", {"form": form})
 
 
 class CollectionUpdate(LoginRequiredMixin, UpdateView):
